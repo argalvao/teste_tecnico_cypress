@@ -1,0 +1,21 @@
+{
+  "name": "teste_tecnico_cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/argalvao/teste_tecnico_cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/argalvao/teste_tecnico_cypress/issues"
+  },
+  "homepage": "https://github.com/argalvao/teste_tecnico_cypress#readme"
+}
