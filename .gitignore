@@ -1,0 +1,15 @@
+# Ignora a pasta de dependências do Node.js
+node_modules/
+
+# Ignora vídeos e screenshots gerados pelo Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Arquivos de log do npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
