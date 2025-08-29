@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/argalvao/teste_tecnico_cypress/issues"
   },
-  "homepage": "https://github.com/argalvao/teste_tecnico_cypress#readme"
+  "homepage": "https://github.com/argalvao/teste_tecnico_cypress#readme",
+  "devDependencies": {
+    "cypress": "^15.0.0"
+  }
 }
