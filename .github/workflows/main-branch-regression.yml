@@ -1,0 +1,22 @@
+name: Regressão Completa (Main)
+
+# Trigger: Executa em todo push (merge) para a branch 'main'
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  cypress-full-regression:
+    name: Testes de Regressão Completos
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Faz o checkout do código do repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Execução do Cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
