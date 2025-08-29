@@ -9,7 +9,6 @@ const formatDate = (date) => {
 describe('Fluxos de Reserva de Quarto', () => {
 
 
-  /*
   // Caso de teste CT05
   it('Realizar reserva via request', () => {
 
@@ -48,7 +47,6 @@ describe('Fluxos de Reserva de Quarto', () => {
     cy.log('Verificação concluída: Reserva efetuada via request.');
 
   });  
-  */
 
   // Caso de teste CT06
   it('Realizar reserva via formulário', () => {

@@ -6,7 +6,6 @@ describe('Fluxo de Envio de Contato', () => {
   });
 
 
-  /*
   // Caso de teste CT01
   it('Deve enviar uma mensagem de contato com sucesso ao preencher todos os dados', () => {
 
@@ -87,7 +86,6 @@ describe('Fluxo de Envio de Contato', () => {
     // Conclusão do teste
     cy.log('Verificação concluída: O campo não aceita menos de 5 caracteres.');
   });
-  */
 
   // Caso de teste CT04
   it('CT04 - Não deve enviar a mensagem com um formato de e-mail inválido', () => {
