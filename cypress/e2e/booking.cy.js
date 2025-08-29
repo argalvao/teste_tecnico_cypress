@@ -5,6 +5,7 @@ describe('Fluxo de Envio de Contato', () => {
     cy.visit('https://automationintesting.online/');
   });
 
+  /*
   // Caso de teste CT01
   it('Deve enviar uma mensagem de contato com sucesso ao preencher todos os dados', () => {
 
@@ -32,5 +33,31 @@ describe('Fluxo de Envio de Contato', () => {
 
     // Verificar mensagem de sucesso
     cy.get('h3.h4.mb-4').should('contain.text', 'Thanks for getting in touch Abel Ramalho Galvão!');
+  });
+  */
+
+  // Caso de teste CT02
+  it('Não deve enviar a mensagem quando o campo obrigatório "Name" está vazio', () => {
+
+    cy.intercept('POST', 'api/message').as('postMessage');
+
+    // Preenchemos todos os campos, exceto o nome
+    cy.get('[data-testid="ContactName"]').scrollIntoView(); // Apenas rola para a visão, sem digitar.
+    cy.get('[data-testid="ContactEmail"]').type('abel.ramalho18@gmail.com', { force: true });
+    cy.get('[data-testid="ContactPhone"]').type('75992148111', { force: true });
+    cy.get('[data-testid="ContactSubject"]').type('Dúvida sobre reserva para o próximo mês (setembro)', { force: true });
+    cy.get('[data-testid="ContactDescription"]').type('Esta é uma tentativa de envio sem o preenchimento do nome.');
+    
+    // Clicando no botão de submit
+    cy.contains('button', 'Submit').click();
+
+    // Verificando que a chamada para a API não foi realizada
+    cy.wait('@postMessage').its('response.statusCode').should('eq', 400);
+
+    // Verificando que não houve a mensagem de sucesso
+    cy.get('.alert').should('not.contain', 'Thanks for getting in touch');
+
+    // Conclusão do teste
+    cy.log('Verificação concluída: A chamada para a API não foi realizada, como esperado.');
   });
 });
