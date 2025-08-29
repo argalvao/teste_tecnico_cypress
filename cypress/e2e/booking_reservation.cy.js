@@ -1,3 +1,6 @@
+import '../support/e2e.js'
+
+
 // Função auxiliar para formatar datas, coloque-a fora do 'describe' ou no topo do arquivo
 const formatDate = (date) => {
   return date.toISOString().split('T')[0];
@@ -6,6 +9,7 @@ const formatDate = (date) => {
 describe('Fluxos de Reserva de Quarto', () => {
 
 
+  
   // Caso de teste CT05
   it('Realizar reserva via request', () => {
 
@@ -38,8 +42,12 @@ describe('Fluxos de Reserva de Quarto', () => {
       }).then((response) => {
         // Garante que a reserva foi criada com sucesso
         expect(response.status).to.eq(200);
-    });    
+    });
+
+    // Conclusão do teste
+    cy.log('Verificação concluída: Reserva efetuada via request.');
 
   });  
+  
 
 });
