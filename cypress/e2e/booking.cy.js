@@ -112,6 +112,4 @@ describe('Fluxo de Envio de Contato', () => {
     // Conclusão do teste
     cy.log('Verificação concluída: O campo de e-mail não está no formato correto.');
   });
-  
-
 });
