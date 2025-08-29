@@ -2,6 +2,7 @@
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
+cypress/node_modules/
 
 # Arquivos de log do npm
 npm-debug.log*
