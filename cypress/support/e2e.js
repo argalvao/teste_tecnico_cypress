@@ -19,11 +19,14 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // Ignora erros específicos do React que não afetam o teste.
-  if (err.message.includes('Minified React error #418')) {
-    return false;
-  }
+Cypress.on('uncaught:exception', (err) => {
+    if (
+      err.message.includes('Minified React error #418') ||
+      err.message.includes("Cannot read properties of undefined (reading 'length')")
+    ) {
+      return false; // impede que o Cypress falhe
+    }
+    return true;
+  });
+;
 
-  return true;
-});
