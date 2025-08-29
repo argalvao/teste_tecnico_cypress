@@ -1,0 +1,25 @@
+name: Verificação Rápida (Pull Request)
+
+# Trigger: Executa em toda abertura ou atualização de Pull Request para a branch 'main'
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-smoke-test:
+    name: Teste de Fumaça (Contato)
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Faz o checkout do código do repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Execução do cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          # Define o navegador para a execução (Google Chrome )
+          browser: chrome
+          # Executa apenas booking.cy.js
+          spec: cypress/e2e/booking.cy.js
