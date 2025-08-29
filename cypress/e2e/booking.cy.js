@@ -5,6 +5,7 @@ describe('Fluxo de Envio de Contato', () => {
     cy.visit('https://automationintesting.online/');
   });
 
+
   /*
   // Caso de teste CT01
   it('Deve enviar uma mensagem de contato com sucesso ao preencher todos os dados', () => {
@@ -59,7 +60,6 @@ describe('Fluxo de Envio de Contato', () => {
     // Conclusão do teste
     cy.log('Verificação concluída: A chamada para a API não foi realizada, como esperado.');
   });
-  */
 
   // Caso de teste CT03
   it('Não deve enviar a mensagem com campo "Subject" abaixo do tamanho mínimo', () => {
@@ -87,6 +87,33 @@ describe('Fluxo de Envio de Contato', () => {
     // Conclusão do teste
     cy.log('Verificação concluída: O campo não aceita menos de 5 caracteres.');
   });
+  */
 
+  // Caso de teste CT04
+  it('CT04 - Não deve enviar a mensagem com um formato de e-mail inválido', () => {
+    // --- PREPARAÇÃO ---
+    cy.intercept('POST', 'api/message').as('postMessage');
+
+    // --- AÇÕES DO USUÁRIO ---
+    cy.get('[data-testid="ContactName"]').scrollIntoView().type('Abel Ramalho Galvão', { force: true });
+
+    // Usando um e-mail sem '@', que é um formato inválido
+    cy.get('[data-testid="ContactEmail"]').type('email-invalido.com', { force: true });
+    cy.get('[data-testid="ContactPhone"]').type('75992148111', { force: true });
+    cy.get('[data-testid="ContactSubject"]').type('Teste de formato de e-mail', { force: true });
+    cy.get('[data-testid="ContactDescription"]').type('Esta mensagem testa a validação de formato do campo de e-mail.');
+    
+    cy.contains('button', 'Submit').click();
+
+    // Verificando que a chamada para a API não foi realizada
+    cy.wait('@postMessage').its('response.statusCode').should('eq', 400);
+
+    // Verificando que não houve a mensagem de sucesso
+    cy.get('.alert').should('not.contain', 'Thanks for getting in touch');
+
+    // Conclusão do teste
+    cy.log('Verificação concluída: O campo de e-mail não está no formato correto.');
+  });
+  
 
 });
