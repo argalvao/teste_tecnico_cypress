@@ -88,7 +88,7 @@ describe('Fluxo de Envio de Contato', () => {
   });
 
   // Caso de teste CT04
-  it('CT04 - Não deve enviar a mensagem com um formato de e-mail inválido', () => {
+  it('Não deve enviar a mensagem com um formato de e-mail inválido', () => {
     // --- PREPARAÇÃO ---
     cy.intercept('POST', 'api/message').as('postMessage');
 
